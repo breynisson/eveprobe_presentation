@@ -40,40 +40,136 @@
 		<div class="reveal">
 
 			<div class='footer'>
-    		<img src="ccp.png">
+    		<img src="">
   		</div>
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
 					<h1>EVE Probe</h1>
-					<h3>Crowd-Testing a Graphics Engine</h3>
+					<h3>Why, How and Where We Are Now</h3>
 					<p>
 						<small><a href="bjorgvin@ccpgames.com">Björgvin Reynisson</a> </small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Slide 1</h2>
-					<p class="fragment">
-						Some text, perhaps?
-					</p>
+						<img src="pics/ccp_onblack.jpg" width="50%" height="50%"/>
+
 					<aside class="notes">
-						Notes about slide 1
+						A few words about CCP.
+						<ul>
+							<li>Founded 1997?</li>
+							<li>EVE launches May 2003</li>
+							<li>Dust launches 2013</li>
+							<li>Valkyrie  in development</li>
+						</ul>
 					</aside>
 				</section>
 
 				<section>
-					<h2>Slide 2</h2>
-					<ul>
-						<li class="fragment">An item.
-						<li class="fragment">And another...
-					</ul>
+					<img src="pics/EVE_logo_plain_lrg.jpg">
 					<aside class="notes">
 						Notes about slide 2
 					</aside>
 				</section>
 
+				<section>
+					<h2>What is EVE Probe?</h2>
+					<ul class="fragment">
+						<li>Crowd-testing the EVE Online Graphics Engine</li>
+						<li>Development</li>
+						<li>Performance Benchmarks/Monitoring</li>
+					</ul>
+					<aside class="notes">
+                        <li>To have the ability to run a controlled test on YOUR machine.</li>
+                        <li>To make test-scenes while developing.</li>
+                        <li>To continuously run the same scenes to monitor the code performance.</li>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Why EVE Probe?</h2>
+				</section>
+				
+				<section>
+					<h3>Anyone experienced this?</h3>
+					<img src="pics/display_driver_crash.jpg"/>
+				    <aside  class="notes">
+						<p>Anyone seen this?</p>
+				    </aside>
+				</section>
+
+				<section data-background="pics/Blue_Screen_of_Death.png">
+				    <aside  class="notes">
+						<p>How about this?</p>
+						<p>We do get reports about these sort of errors from time to time.</p>
+				    </aside>
+				</section>
+
+				<section>
+					<h2>"We cannot reproduce this..."</h2>
+				    <aside  class="notes">
+                        <p>...is neither satisfying for us nor our players</p>
+				    </aside>
+				</section>
+
+
+                <section>
+                    <h2>Why is reproduction of issues hard?</h2>
+
+                    <aside  class="notes">
+                        <p>Some issues may not be deterministic, i.e., may not be 100%
+                        reproducible even with same setup. Those are not the scope of this talk.
+
+                        It can be hard to recreate the conditions present when an issue happens:
+                        What is the hardware used? What is the software (OS, drivers)?</p>
+
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>EVE Players use a LOT of different configurations</h2>
+                    <ul class="fragment">
+                        <li>Windows</li>
+                        <li>Mac</li>
+                        <li>Linux (although we don't support it)</li>
+                        <li>855 different Graphics cards (GPU's)</li>
+                    </ul>
+                    <aside  class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+
+
+				<section>
+					<h2>
+						What is collected?
+					</h2>
+					<ul class="fragment">
+						<li>System Info</li>
+						<li>Settings</li>
+						<li>EVE Probe version</li>
+						<li>logs</li>
+						<li>Performance Metrics</li>
+					</ul>
+					<aside class="notes">
+						<ul>
+							<li>OS, GPU, Processor, RAM</li>
+							<li>Monitor resolution</li>
+							<li>Self-explanatory</li>
+							<li>If any</li>
+							<li>149 different metrics for each scene.</li>
+							<li>We primarily look at Frametime and Memory metrics.</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+
+				    <aside>
+				    </aside>
+				</section>
 
 				<section>
 					<h1>Questions?</h1>
