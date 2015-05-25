@@ -49,8 +49,12 @@
 					<h1>EVE Probe</h1>
 					<h3>Why, How and Where We Are Now</h3>
 					<p>
-						<small><a href="bjorgvin@ccpgames.com">Björgvin Reynisson</a> </small>
-					</p>
+						<small><a href="bjorgvin@ccpgames.com">Björgvin Reynisson</a> </small><br>
+
+                        <small><a href="bjorgvin@ccpgames.com">bjorgvin@ccpgames.com</a> </small><br>
+
+                        <small><a href="http://twitter.com/breynisson">@breynisson</a> </small>
+                    </p>
 				</section>
 
 				<section>
@@ -77,6 +81,7 @@
 				<section>
 					<h2>What is EVE Probe?</h2>
 					<ul class="fragment">
+                        <p>An app for:</p>
 						<li>Crowd-testing the EVE Online Graphics Engine</li>
 						<li>Development</li>
 						<li>Performance Benchmarks/Monitoring</li>
@@ -100,7 +105,8 @@
 				    </aside>
 				</section>
 
-				<section data-background="pics/Blue_Screen_of_Death.png">
+				<section>
+                    <img src="pics/Blue_Screen_of_Death.png"/>
 				    <aside  class="notes">
 						<p>How about this?</p>
 						<p>We do get reports about these sort of errors from time to time.</p>
@@ -119,11 +125,11 @@
                     <h2>Why is reproduction of issues hard?</h2>
 
                     <aside  class="notes">
-                        <p>Some issues may not be deterministic, i.e., may not be 100%
+                        Some issues may not be deterministic, i.e., may not be 100%
                         reproducible even with same setup. Those are not the scope of this talk.
 
                         It can be hard to recreate the conditions present when an issue happens:
-                        What is the hardware used? What is the software (OS, drivers)?</p>
+                        What is the hardware used? What is the software (OS, drivers)?
 
                     </aside>
                 </section>
@@ -142,34 +148,204 @@
                 </section>
 
 
-				<section>
-					<h2>
-						What is collected?
-					</h2>
-					<ul class="fragment">
-						<li>System Info</li>
-						<li>Settings</li>
-						<li>EVE Probe version</li>
-						<li>logs</li>
-						<li>Performance Metrics</li>
-					</ul>
-					<aside class="notes">
-						<ul>
-							<li>OS, GPU, Processor, RAM</li>
-							<li>Monitor resolution</li>
-							<li>Self-explanatory</li>
-							<li>If any</li>
-							<li>149 different metrics for each scene.</li>
-							<li>We primarily look at Frametime and Memory metrics.</li>
-						</ul>
-					</aside>
-				</section>
+                <section>
+                    <h1>
+                        Let's make an app!
+                    </h1>
+                    <aside  class="notes">
+                    </aside>
+                </section>
 
-				<section>
+                <section>
+                    <h2>
+                        EVE Probe
+                    </h2>
+                    Works on your machine!
+                    <aside  class="notes">
+                        <p>
+                            A shift from the tried and tired Dev quote of: "It works on my machine".
+                        </p>
+                    </aside>
+                </section>
 
-				    <aside>
-				    </aside>
-				</section>
+                <section>
+                    <h2>
+                        EVE Probe
+                    </h2>
+                    <p>
+                        Repeatable test-scenes that you play back on your computer.
+                    </p>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        Crowd-testing!
+                    </h2>
+                    <p>Increased coverage</p>
+                    <aside  class="notes">
+                        <p>
+                            Works on your machine. 
+                        </p>
+                    </aside>
+                </section>
+
+
+                <section>
+                    <img src="pics/EVEProbeLauncher.PNG"/>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <video class="stretch" data-autoplay src="video/fleet3.mp4" type="video/mp4"></video>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        What metrics are collected?
+                    </h2>
+                    <ul class="fragment">
+                        <li>System Info</li>
+                        <li>Settings</li>
+                        <li>EVE Probe version</li>
+                        <li>Logs</li>
+                        <li>Performance Metrics</li>
+                        <li>Crash info</li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>Data is not personally identifiable</li>
+                            <li>OS, GPU, Processor, RAM</li>
+                            <li>Monitor resolution</li>
+                            <li>Self-explanatory</li>
+                            <li>If any</li>
+                            <li>149 different metrics for each scene.</li>
+                            <li>We primarily look at Frametime and Memory metrics.</li>
+                            <li>If the EVE Probe crashes during run we collect crash info.</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Data Pipeline</h2>
+                    <ul>
+                        <li>EVE Probe sends performance/settings data to an AWS bucket</li>
+                        <li>Data is collected and sent to an internal Mongodb database</li>
+                    </ul>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Data Pipeline</h2>
+                    <p>
+                        Initially used R and IPython notebooks for cleaning/processing/visualizing data.
+                    </p>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        IPython Notebook Example
+                    </h2>
+                    <img src="pics/EVEProbe_IPythonNotebook.PNG"/>
+                    <aside  class="notes">
+                        <p>
+                            IPython Notebooks and R are EXCELLENT tools for exploratory data analysis.
+                            When your data becomes too big to handle in-memory, then you might want to
+                            explore other ways of digging into your data.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h1>
+                        Where's my Dashboard???
+                    </h1>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        EveProbe Dashboard
+                    </h2>
+                    <img src="pics/EVEProbeDashboard.PNG"/>
+                    <aside  class="notes">
+                        <p>
+                            Voila!
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        EVEProbe Dashboard
+                    </h2>
+                    <ul>
+                        <li>Python Flask application</li>
+                        <li>Javascript visualization</li>
+                        <li>Map/Reduce queries against the Mongodb</li>
+                    </ul>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        Reports
+                    </h2>
+                    <img src="pics/EVEProbe_Reports.PNG"/>
+                    <aside  class="notes">
+                        <p>
+                            A collection of reports.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Example:</h2>
+                    <img src="pics/EVEProbe_DXsplit.PNG"/>
+                    <aside  class="notes">
+                        An example of one the reports.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Performance Metrics</h2>
+                    <img src="pics/EVEProbePerformance_1.PNG"/>
+                    <aside  class="notes">
+                        <p>
+                            From the "performance stat" field, you can choose any one of the 149
+                            different metrics.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Performance Metrics</h2>
+                    <img src="pics/EVEProbePerformance_2.PNG"/>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                <h2>Builds from each branch</h2>
+                <img src="pics/EVEProbe_builds.PNG"/>
+                <aside  class="notes">
+                <p>
+                Automatic builds.
+                The page shows EVE Probe builds from the different branches.
+                The publish button can be used to publish the selected build.
+                </p>
+                </aside>
+                </section>
+
 
 				<section>
 					<h1>Questions?</h1>
