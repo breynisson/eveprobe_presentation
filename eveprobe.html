@@ -264,11 +264,17 @@
 
                 <section>
                     <h2>Data Pipeline</h2>
-                    <ul>
-                        <li>EVE Probe sends data to an AWS bucket</li>
-                        <li>Data sent to an internal Mongodb database</li>
-                    </ul>
+                    <img src="pics/DataCollection.png"/>
                     <aside  class="notes">
+                        <ul>
+                            <li>EVE Probe sends data to a server on an AWS EC2 instance</li>
+                            <li>This server zips up the incoming information.</li>
+                            <li>We have an internal server which queries the AWS servers for
+                            data.</li>
+                            <li>If there is new data, we send it to our internal server, where
+                            it is unpacked and sent to our Mongodb,</li>
+                            <li>We query our Mongodb to process the data.</li>
+                        </ul>
                     </aside>
                 </section>
 
@@ -398,6 +404,13 @@
                 </section>
 
                 <section>
+                    <h2>Link:</h2>
+                    <a href="https://forums.eveonline.com/default.aspx?g=topics&f=6404">EVE Probe Forums</a>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
                     <h2>Delivery</h2>
                     <p>
                         Resources are delivered On-Demand.
@@ -479,12 +492,32 @@
                     <h2>Adoption</h2>
                     <img src="pics/EVEProbeReportsPerDay.PNG" height="75%" width="75%"/>
                     <aside  class="notes">
+                        Total test-runs below 10K.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Success?</h2>
+                    <ul>
+                        <li>Great development tool</li>
+                        <li>Has proved it's worth for hard-to-reproduce defects</li>
+                        <li>High hopes for use as a benchmarking tool</li>
+                    </ul>
+                    <aside  class="notes">
                     </aside>
                 </section>
 
                 <section>
                     <h2>What can we improve on?</h2>
+                    <ul>
+                        <li>The uptake is not great</li>
+                        <li>Due to soft-launch and little push?</li>
+                        <li>Make the tool a part of the release process?</li>
+                    </ul>
                     <aside  class="notes">
+                        <ul>
+                            <li>We have not really been pushing the app.</li>
+                        </ul>
                     </aside>
                 </section>
 
