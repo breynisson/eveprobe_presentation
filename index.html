@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>EVE Probe - Crowd-testing a Graphics Engine</title>
+
+		<meta name="description" content="EVE Probe, Why, What and How.">
+		<meta name="author" content="Bjorgvin Reynisson">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="blank.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class='footer'>
+    		<img src="pics/CCP.png">
+  		</div>
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>EVE Probe</h1>
+					<h3>Why, How, and Where We Are Now</h3>
+					<p>
+						<small><a href="bjorgvin@ccpgames.com">Björgvin Reynisson</a> </small><br>
+
+                        <small><a href="bjorgvin@ccpgames.com">bjorgvin@ccpgames.com</a> </small><br>
+
+                        <small><a href="http://twitter.com/breynisson">@breynisson</a> </small>
+                    </p>
+				</section>
+
+                <section>
+                    <h2>What's this all about?</h2>
+                    <p>
+                        How we made a crowd-testing app that is also used for development
+                    </p>
+                    <aside  class="notes">
+                        I will tell you about why we made a crowd-testing app, which is
+                        used heavily for development. Why did we do it? And what is the
+                        current status?
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Who is your presenter?</h2>
+                    <p>Björgvin Reynisson</p>
+                    <p>QA Engineer at CCP Games</p>
+                    <p>Background in mobile phones</p>
+                    <aside  class="notes">
+                        Electrical Engineer.
+                        At CCP since 2013. Previously at Nokia doing manufacturing
+                        tunings and tests.
+                    </aside>
+                </section>
+
+				<section>
+						<img src="pics/ccp_onblack.jpg" width="50%" height="50%"/>
+
+					<aside class="notes">
+						A few words about CCP.
+						<ul>
+							<li>Founded 1997?</li>
+							<li>EVE launches May 2003</li>
+							<li>Dust launches 2013</li>
+							<li>Valkyrie  in development</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<img src="pics/EVE_logo_plain_lrg.jpg">
+					<aside class="notes">
+                        <ul>
+                            <li>Massively multiplayer online game (MMOG)</li>
+                            <li>Launched May 2003</li>
+                            <li>Single-shard</li>
+                            <!-- TODO: Can I put subscriber numbers here?-->
+                            <li>Subscriber numbers?</li>
+                        </ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>What is EVE Probe?</h2>
+					<ul class="fragment">
+                        <p>An app for:</p>
+						<li>Crowd-testing the EVE Online Graphics Engine</li>
+						<li>Development</li>
+						<li>Performance Benchmarks/Monitoring</li>
+					</ul>
+					<aside class="notes">
+                        <li>To have the ability to run a controlled test on YOUR machine.</li>
+                        <li>To make test-scenes while developing.</li>
+                        <li>To continuously run the same scenes to monitor the code performance.</li>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Why EVE Probe?</h2>
+				</section>
+				
+				<section>
+					<h3>Has anyone experienced this?</h3>
+					<img src="pics/display_driver_crash.jpg"/>
+				    <aside  class="notes">
+						<p>Anyone seen this?</p>
+				    </aside>
+				</section>
+
+				<section>
+                    <img src="pics/Blue_Screen_of_Death.png"/>
+				    <aside  class="notes">
+						<p>How about this?</p>
+						<p>We do get reports about these sort of errors from time to time.</p>
+				    </aside>
+				</section>
+
+				<section>
+					<h2>"We cannot reproduce this..."</h2>
+				    <aside  class="notes">
+                        <p>...is neither satisfying for us nor our players</p>
+				    </aside>
+				</section>
+
+
+                <section>
+                    <h2>Why is reproduction of issues hard?</h2>
+
+                    <aside  class="notes">
+                        Some issues may not be deterministic, i.e., may not be 100%
+                        reproducible even with same setup. Those are not the scope of this talk.
+
+                        It can be hard to recreate the conditions present when an issue happens:
+                        What is the hardware used? What is the software (OS, drivers)?
+
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>EVE Players use a LOT of different configurations</h2>
+                    <ul class="fragment">
+                        <li>Windows</li>
+                        <li>Mac</li>
+                        <li>Linux (although we don't support it)</li>
+                        <li>855 different Graphics cards (GPU's)</li>
+                    </ul>
+                    <aside  class="notes">
+                        <p></p>
+                    </aside>
+                </section>
+
+
+                <section>
+                    <h1>
+                        Let's make an app!
+                    </h1>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        EVE Probe
+                    </h2>
+                    Works on your machine!
+                    <aside  class="notes">
+                        <p>
+                            A shift from the tried and tired Dev quote of: "It works on my machine"
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        EVE Probe
+                    </h2>
+                    <p>
+                        Repeatable test-scenes that you play back on your computer
+                    </p>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        Crowd-testing!
+                    </h2>
+                    <p>Increased coverage</p>
+                    <aside  class="notes">
+                        <p>
+                            Works on your machine. 
+                        </p>
+                    </aside>
+                </section>
+
+
+                <section>
+                    <img src="pics/EVEProbeLauncher.PNG"/>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Demo:</h2>
+                    <video class="stretch" data-autoplay src="video/fleet3.mp4" type="video/mp4"></video>
+                    <aside  class="notes">
+                        This is one of the scenes currently in the EVE Probe.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        What metrics are collected?
+                    </h2>
+                    <ul class="fragment">
+                        <li>System Info</li>
+                        <li>Settings</li>
+                        <li>EVE Probe version</li>
+                        <li>Logs</li>
+                        <li>Performance Metrics</li>
+                        <li>Crash info</li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>Data is not personally identifiable</li>
+                            <li>OS, GPU, Processor, RAM</li>
+                            <li>Monitor resolution</li>
+                            <li>Self-explanatory</li>
+                            <li>If any</li>
+                            <li>149 different metrics for each scene.</li>
+                            <li>We primarily look at Frametime and Memory metrics.</li>
+                            <li>If the EVE Probe crashes during run we collect crash info.</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Data Pipeline</h2>
+                    <img src="pics/DataCollection.png"/>
+                    <aside  class="notes">
+                        <ul>
+                            <li>EVE Probe sends data to a server on an AWS EC2 instance</li>
+                            <li>This server zips up the incoming information.</li>
+                            <li>We have an internal server which queries the AWS servers for
+                            data.</li>
+                            <li>If there is new data, we send it to our internal server, where
+                            it is unpacked and sent to our Mongodb,</li>
+                            <li>We query our Mongodb to process the data.</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Data Pipeline</h2>
+                    <p>
+                        Initially used R and IPython notebooks for cleaning/processing/visualizing data
+                    </p>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        IPython Notebook Example
+                    </h2>
+                    <img src="pics/EVEProbe_IPythonNotebook.PNG"/>
+                    <aside  class="notes">
+                        <p>
+                            IPython Notebooks and R are EXCELLENT tools for exploratory data analysis.
+                            When your data becomes too big to handle in-memory, then you might want to
+                            explore other ways of digging into your data.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h1>
+                        Where's my Dashboard!?
+                    </h1>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        EveProbe Dashboard
+                    </h2>
+                    <img src="pics/EVEProbeDashboard.PNG"/>
+                    <aside  class="notes">
+                        <p>
+                            Voila!
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        EVEProbe Dashboard
+                    </h2>
+                    <ul>
+                        <li>Python Flask application</li>
+                        <li>Javascript visualization</li>
+                        <li>Map/Reduce queries Mongodb</li>
+                    </ul>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>
+                        Reports
+                    </h2>
+                    <img src="pics/EVEProbe_Reports.PNG"/>
+                    <aside  class="notes">
+                        <p>
+                            A collection of reports.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Example:</h2>
+                    <img src="pics/EVEProbe_DXsplit.PNG"/>
+                    <aside  class="notes">
+                        An example of one the reports.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Performance Metrics</h2>
+                    <img src="pics/EVEProbePerformance_1.PNG"/>
+                    <aside  class="notes">
+                        <p>
+                            From the "performance stat" field, you can choose any one of the 149
+                            different metrics.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Performance Metrics</h2>
+                    <img src="pics/EVEProbePerformance_2.PNG"/>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Deployment Process</h2>
+                    <img src="pics/ProbeSetup2.png"/>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                <h2>Builds from each branch</h2>
+                <img src="pics/EVEProbe_builds.PNG"/>
+                <aside  class="notes">
+                <p>
+                Automatic builds.
+                The page shows EVE Probe builds from the different branches.
+                The publish button can be used to publish the selected build.
+                </p>
+                </aside>
+                </section>
+
+                <section>
+                    <h2>Getting the app to the players</h2>
+                    <img src="pics/EVEProbeForums.PNG"/>
+                    <aside  class="notes">
+                        <p>This is a part of the process we've done the least amount of work on.
+                        We did a soft-launch, only putting up a forum thread with some information,
+                        and a download link.  Since then, we have not really push the app, except for
+                        a one-time news-item in the EVE-Online launcher.
+                        Clearly, we suspect the adoption numbers reflect this.</p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Link:</h2>
+                    <a href="https://forums.eveonline.com/default.aspx?g=topics&f=6404">EVE Probe Forums</a>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Delivery</h2>
+                    <p>
+                        Resources are delivered On-Demand.
+                    </p>
+                    <p>
+                        Binaries are delivered On-Demand.
+                    </p>
+                    <aside  class="notes">
+                        Resources have been delivered on-demand from the start.
+                        This means that the needed resources for each scenes are downloaded
+                        at runtime.
+                        Binaries on-demand introduced recently.
+                        Means the binary version is downloaded at runtime.
+                    </aside>
+                </section>
+
+                <section>
+                    <img src="pics/EVEProbeSettings1.PNG"/>
+                    <aside  class="notes">
+                        Due to the Binaries being downloaded on-demand, you can choose the available versions.
+                        I.e., the versions that have been published by CCP show up in "Available versions:"
+                    </aside>
+                </section>
+
+                <section>
+                    <img src="pics/EVEProbeSettings2.PNG"/>
+                    <aside  class="notes">
+                        Due to the Binaries being downloaded on-demand, you can choose the available versions.
+                        I.e., the versions that have been published by CCP show up in "Available versions:"
+                    </aside>
+                </section>
+
+                <!-- TODO: Remove this one? And simply chat about it?-->
+                <section>
+                    <h2>Download-on-Demand</h2>
+                    <p>
+                        Now implemented for EVE Online
+                    </p>
+                    <p>
+                        One of the biggest changes in the delivery of the game
+                    </p>
+                    <p>
+                        Currently investigating binary delivery for EVE Online
+                    </p>
+                    <aside  class="notes">
+                        <p>
+                            The EVE Online install used to be more the 7Gigs. The install
+                            is now a couple of hundred Megs.
+                            You can always choose to download everything.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Developer Tool</h2>
+                    <ul>
+                        <li>A test-framework</li>
+                        <li>Repeatable scenes</li>
+                    </ul>
+                    <aside  class="notes">
+                        <p>Heavily used by the core graphics team.</p>
+                        <p>
+                            Helps when doing any kind of refactoring or optimization.
+                            We know that the scene looks the same every time. So when when changing
+                            code, and comparing results, we know that the code is the variable, and not the
+                            test-setup.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Demo:</h2>
+                    <video class="stretch" data-autoplay src="video/secondary_lighting.mp4" type="video/mp4"></video>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Adoption</h2>
+                    <img src="pics/EVEProbeReportsPerDay.PNG" height="75%" width="75%"/>
+                    <aside  class="notes">
+                        Total test-runs below 10K.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Success?</h2>
+                    <ul>
+                        <li>Great development tool</li>
+                        <li>Has proven its worth for hard-to-reproduce defects</li>
+                        <li>Big potential for benchmarking use</li>
+                    </ul>
+                    <aside  class="notes">
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Improvements?</h2>
+                    <ul>
+                        <li>Low uptake</li>
+                        <li>Soft launch with minimal push</li>
+                        <li>Integrate into release process</li>
+                    </ul>
+                    <aside  class="notes">
+                        <ul>
+                            <li>We have not really been pushing the app.</li>
+                        </ul>
+                    </aside>
+                </section>
+
+				<section>
+					<h1>Questions?</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+
+		</script>
+
+	</body>
+</html>
