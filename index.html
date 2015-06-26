@@ -15,8 +15,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="reveal.js/css/reveal.css">
-		<link rel="stylesheet" href="blank.css">
-		<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="blank.css">
+        <link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
@@ -29,6 +29,16 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+        <style>
+            .reveal section img {
+                margin: 15px 0px;
+                background: rgba(255,255,255,0.12);
+                border: none;
+
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            }
+        </style>
 
 		<!--[if lt IE 9]>
 		<script src="reveal.js/lib/js/html5shiv.js"></script>
@@ -81,8 +91,8 @@
                     </aside>
                 </section>
 
-				<section data-background="#000000">
-						<img src="pics/ccp_onblack.jpg" width="50%" height="50%"/>
+				<section>
+						<img src="pics/ccp-stor.jpg" width="50%" height="50%" style="border:0; box-shadow: none"/>
 
 					<aside class="notes">
 						A few words about CCP.
@@ -95,8 +105,8 @@
 					</aside>
 				</section>
 
-				<section data-background="#ffffff">
-					<img src="pics/EVE_logo_plain_lrg.jpg">
+				<section>
+					<img src="pics/EVE_logo_plain_lrg.jpg" style="border:0; box-shadow: none">
 					<aside class="notes">
                         <ul>
                             <li>Massively multiplayer online game (MMOG)</li>
@@ -129,14 +139,14 @@
 				
 				<section>
 					<h3>Has anyone experienced this?</h3>
-					<img src="pics/display_driver_crash_2.png"/>
+					<img src="pics/display_driver_crash_2.png" style="border:0" />
 				    <aside  class="notes">
 						<p>Anyone seen this?</p>
 				    </aside>
 				</section>
 
 				<section>
-                    <img src="pics/Blue_Screen_of_Death.png"/>
+                    <img src="pics/Blue_Screen_of_Death.png" style="border:0"/>
 				    <aside  class="notes">
 						<p>How about this?</p>
 						<p>We do get reports about these sort of errors from time to time.</p>
@@ -152,7 +162,7 @@
 
 
                 <section>
-                    <h2>Why is reproduction of issues hard?</h2>
+                    <h2>Why is reproduction hard?</h2>
 
                     <aside  class="notes">
                         Some issues may not be deterministic, i.e., may not be 100%
@@ -264,7 +274,7 @@
 
                 <section>
                     <h2>Data Pipeline</h2>
-                    <img src="pics/DataCollection.png"/>
+                    <img src="pics/DataCollection.png" style="border:0; box-shadow: none"/>
                     <aside  class="notes">
                         <ul>
                             <li>EVE Probe sends data to a server on an AWS EC2 instance</li>
@@ -317,20 +327,12 @@
                     <aside  class="notes">
                         <p>
                             Voila!
+                        <ul>
+                            <li>Python Flask application</li>
+                            <li>Javascript visualization</li>
+                            <li>Map/Reduce queries Mongodb</li>
+                        </ul>
                         </p>
-                    </aside>
-                </section>
-
-                <section>
-                    <h2>
-                        EVEProbe Dashboard
-                    </h2>
-                    <ul>
-                        <li>Python Flask application</li>
-                        <li>Javascript visualization</li>
-                        <li>Map/Reduce queries Mongodb</li>
-                    </ul>
-                    <aside  class="notes">
                     </aside>
                 </section>
 
@@ -405,7 +407,7 @@
 
                 <section>
                     <h2>Link:</h2>
-                    <a href="https://forums.eveonline.com/default.aspx?g=topics&f=6404">EVE Probe Forums</a>
+                    <a href="https://forums.eveonline.com/default.aspx?g=topics&f=6404">http://forums.eveonline.com/default.aspx?g=topics&f=6404</a>
                     <aside  class="notes">
                     </aside>
                 </section>
@@ -443,27 +445,6 @@
                     </aside>
                 </section>
 
-                <!-- TODO: Remove this one? And simply chat about it?-->
-                <!--<section>-->
-                    <!--<h2>Download-on-Demand</h2>-->
-                    <!--<p>-->
-                        <!--Now implemented for EVE Online-->
-                    <!--</p>-->
-                    <!--<p>-->
-                        <!--One of the biggest changes in the delivery of the game-->
-                    <!--</p>-->
-                    <!--<p>-->
-                        <!--Currently investigating binary delivery for EVE Online-->
-                    <!--</p>-->
-                    <!--<aside  class="notes">-->
-                        <!--<p>-->
-                            <!--The EVE Online install used to be more the 7Gigs. The install-->
-                            <!--is now a couple of hundred Megs.-->
-                            <!--You can always choose to download everything.-->
-                        <!--</p>-->
-                    <!--</aside>-->
-                <!--</section>-->
-
                 <section>
                     <h2>Developer Tool</h2>
                     <ul>
@@ -488,13 +469,6 @@
                     </aside>
                 </section>
 
-                <section>
-                    <h2>Adoption</h2>
-                    <img src="pics/EVEProbeReportsPerDay.PNG" height="75%" width="75%"/>
-                    <aside  class="notes">
-                        Total test-runs below 10K.
-                    </aside>
-                </section>
 
                 <section>
                     <h2>Success?</h2>
@@ -504,6 +478,17 @@
                         <li>Big potential for benchmarking use</li>
                     </ul>
                     <aside  class="notes">
+                        <p>
+                            Also used the tool to prove the DoD concept.
+                        </p>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Adoption</h2>
+                    <img src="pics/EVEProbeReportsPerDay.PNG" height="75%" width="75%"/>
+                    <aside  class="notes">
+                        Total test-runs below 10K.
                     </aside>
                 </section>
 
@@ -554,7 +539,6 @@
 					{ src: 'reveal.js/plugin/notes/notes.js', async: true }
 				]
 			});
-
 
 		</script>
 
