@@ -69,10 +69,13 @@
                 <section>
                     <h2>This talk is about:</h2>
                     <ul>
-                        <li class="fragment">How we made a crowd-testing app</li>
-                        <li class="fragment">and why...</li>
-                        <li class="fragment">and how it is working for us</li>
+                        <li>Why we made a crowd-testing app</li>
+                        <li>How we did it</li>
+                        <li>How it is working for us</li>
                     </ul>
+                        <aside class="notes">
+                            But first I will start by telling you a little bit about me, about CCP and about EVE Online.
+                        </aside>
                 </section>
 
                 <section>
@@ -80,20 +83,15 @@
                     <p>Björgvin Reynisson</p>
                     <p>QA Engineer at CCP Games</p>
                     <p>Background in mobile phones</p>
+                    <aside class="notes">
+                        A little over two years at CCP. Before that, 7 years at Nokia Mobile Phones. <br/>
+                        Part of team responsible for the graphics engine.
+                    </aside>
                 </section>
+
 
 				<section>
 						<img src="pics/ccp-stor.jpg" width="50%" height="50%" style="border:0; box-shadow: none"/>
-
-					<aside class="notes">
-						A few words about CCP.
-						<ul>
-							<li>Founded 1997</li>
-							<li>EVE launches May 2003</li>
-							<li>Dust launches 2013</li>
-							<li>Valkyrie in development</li>
-						</ul>
-					</aside>
 				</section>
 
                 <section>
@@ -107,6 +105,10 @@
                         <li>Approx. 350 employees worldwide</li>
                         <li>Headquarters: Reykjavik, Iceland</li>
                     </ul>
+                    <aside class="notes">
+
+                    </aside>
+
                 </section>
                 <section>
                     <!--<h2>CCP Overview</h2>-->
@@ -114,46 +116,81 @@
                         <ul style="list-style-type: none">
                             <li>Reykjavik, Atlanta, Shanghai and Newcastle</li>
                         </ul>
+                </section>
 
+                <section data-background="black">
+                    <img src="pics/eve_online_black_2.png" width="50%" height="50%" style="border:0; box-shadow: none"/>
+                    <img src="pics/dust514_2.png" style="float:right" width="50%" height="50%" style="border:0; box-shadow: none"/>
+                    <img src="pics/gunjack_2.png" style="float:right" width="50%" height="50%" style="border:0; box-shadow: none"/>
+                    <img src="pics/valkyrie_2.png" width="50%" height="50%" style="border:0; box-shadow: none"/>
+                    <aside  class="notes">
+                        <ul>
+                            <li>EVE Online: Single shard sandbox MMO. Dev in Rkv.</li>
+                            <li>Dust 514: Free to play FirstPersonShooter on PS3. Dev in Shanghai</li>
+                            <li>EVE Gunjack: VR Arcade Shooter for Samsung Gear. Dev in Shanghai</li>
+                            <li>EVE Valkyrie: VR Dogfighting shooter. Dev in Newcastle</li>
+                        </ul>
+                    </aside>
                 </section>
 
 
                 <section>
 					<img src="pics/EVE_logo_plain_lrg.jpg" style="border:0; box-shadow: none">
-					<aside class="notes">
-                        <ul>
-                            <li>Massively multiplayer online game (MMOG)</li>
-                            <li>Launched May 2003</li>
-                            <li>Single-shard</li>
-                        </ul>
-					</aside>
 				</section>
-
-                <section data-background="pics/eve_online_background.jpg">
-                    <div>&nbsp;</div>
-                </section>
 
                 <section>
                     <h2>EVE Online</h2>
+                    <ul>
+                        <li>Massively multiplayer online game (MMO)</li>
+                        <li>Launched May 2003</li>
+                        <li>Approx. 500K players in a single world</li>
+                        <li>Players in over 190 countries</li>
+                        <li>Biggest markets: US, Russia, Germany, UK and Canada</li>
+                    </ul>
+                    <aside class="notes">
                         <ul>
-                            <li>Massively multiplayer online game (MMO)</li>
+                            <li>Massively multiplayer online game (MMOG)</li>
                             <li>Launched May 2003</li>
-                            <li>Approx. 500K players in a single world</li>
-                            <li>Players in over 190 countries</li>
-                            <li>Biggest markets: US, Russia, Germany, UK and Canada</li>
+                            <li>Persistent Universe on a single shard, this means
+                                everyone plays in the same world (23 and a half hours up uptime)</li>
                         </ul>
+                    </aside>
+                </section>
+
+                <section data-background="pics/eve_online_background.jpg">
+                    <div>&nbsp;</div>
+                    <aside class="notes">
+                        EVE is a sandbox and that gives you the freedom to build your own empires. However this means that anything you build can also be destroyed.
+                        <br/>
+                        This is the equivalent of spending months building a city in Minecraft only for someone to come along and tear it down
+                    </aside>
                 </section>
 
                 <section data-background="pics/eve_online_station.jpg">
                     <div>&nbsp;</div>
+                    <aside class="notes">
+                        <ul>
+                            <li>As a designer a sandbox allows you to focus on building systems and lets players worry about creating the content.</li>
+                            <li>A good example of this is the battle of B-R where one players small mistake had repercussions for the entire universe leading to loses of 11 Trillion ISK which equates to over $300,000 dollars. The mistake…  simply forgetting to pay a bill!
+                            </li>
+                        </ul>
+                    </aside>
                 </section>
 
                 <section data-background="pics/eve_online_battle.png">
                     <div>&nbsp;</div>
+                    <aside class="notes">
+                        A good example of this is the battle of B-R where one players small mistake had repercussions for the entire universe leading to loses of 11 Trillion ISK which equates to over $300,000 dollars. The mistake…  simply forgetting to pay a bill!
+                    </aside>
                 </section>
 
                 <section data-background="pics/eve_online_battle_002.png.jpg">
                     <div>&nbsp;</div>
+                    <aside class="notes">
+                        A good example of this is the battle of B-R where one players small mistake had repercussions for the entire universe leading to loses of 11 Trillion ISK which equates to over $300,000 dollars. The mistake…  simply forgetting to pay a bill!
+                        <br/>
+                        Segway to graphics->and why the crowd-test.
+                    </aside>
                 </section>
 
                 <section>
@@ -301,10 +338,9 @@
                     </aside>
                 </section>
 
-                <section section data-background-video="video/fleet3.mp4"  data-background-color="black" d>
+                <section data-background-video="video/fleet3.mp4" data-background-color="black">
                     <div>&nbsp;</div>
                 </section>
-
 
                 <!--<section>-->
                     <!--<h2>Demo:</h2>-->
@@ -532,6 +568,11 @@
                     <h2>Delivery</h2>
                     <img src="pics/EVEProbeRuntime.png" style="border:0; padding:1em" />
                     <aside  class="notes">
+                        Resources have been delivered on-demand from the start.
+                        This means that the needed resources for each scenes are downloaded
+                        at runtime.
+                        Binaries on-demand introduced recently.
+                        Means the binary version is downloaded at runtime.
                     </aside>
                 </section>
 
